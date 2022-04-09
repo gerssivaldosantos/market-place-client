@@ -1,9 +1,13 @@
 <script lang="ts" setup>import { ref } from 'vue'
-
+import { useAuth } from '../helpers/useRequest'
 const email = ref<string>('')
 const password = ref<string>('')
-const submitForm = () => {
-  console.log('form')
+const submitForm = async () => {
+  const result = await useAuth.login({
+    email: email.value,
+    password: password.value
+  })
+  console.log(result)
 }
 </script>
 
