@@ -2,10 +2,10 @@
   <router-view />
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script lang="ts" setup>import { onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 
-export default defineComponent({
-  name: 'App'
+onMounted(() => {
+  localStorage.getItem('token') ?? useRouter().push('/login')
 })
 </script>
