@@ -12,6 +12,16 @@ const routes: RouteRecordRaw[] = [
     children: [{ path: '', component: () => import('pages/LoginPage.vue') }]
   },
   {
+    path: '/create-account',
+    component: () => import('layouts/LoginLayout.vue'),
+    children: [{ path: '', component: () => import('pages/CreateAccountPage.vue') }]
+  },
+  {
+    path: '/rescue-password',
+    component: () => import('layouts/LoginLayout.vue'),
+    children: [{ path: '', component: () => import('pages/RescuePasswordPage.vue') }]
+  },
+  {
     path: '/my-products',
     component: () => import('layouts/MainLayout.vue'),
     children: [{ path: '', component: () => import('pages/MyProducts.vue') }]
