@@ -23,11 +23,16 @@
   </q-layout>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref } from 'vue'
+<script lang="ts" setup>
 import RouteLink from 'components/RouteLink.vue'
+import { ref } from 'vue'
 
-const routeList = [
+const leftDrawerOpen = ref(false)
+const toggleLeftDrawer = () => {
+  leftDrawerOpen.value = !leftDrawerOpen.value
+}
+
+const routeLinks = [
   {
     title: 'Home',
     caption: '',
@@ -41,24 +46,4 @@ const routeList = [
     route: '/my-products'
   }
 ]
-
-export default defineComponent({
-  name: 'MainLayout',
-
-  components: {
-    RouteLink
-  },
-
-  setup () {
-    const leftDrawerOpen = ref(false)
-
-    return {
-      routeLinks: routeList,
-      leftDrawerOpen,
-      toggleLeftDrawer () {
-        leftDrawerOpen.value = !leftDrawerOpen.value
-      }
-    }
-  }
-})
 </script>
