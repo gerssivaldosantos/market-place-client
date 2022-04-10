@@ -1,4 +1,4 @@
 export type authResponse = {
-  token: string
-  message: string
+  token: string | undefined
+  message: string | undefined
 }
