@@ -7,6 +7,7 @@
         <q-toolbar-title>Market Place</q-toolbar-title>
 
         <div>Username</div>
+        <q-btn flat icon="logout" @click="onLogout" />
       </q-toolbar>
     </q-header>
 
@@ -20,16 +21,21 @@
     <q-page-container>
       <router-view />
     </q-page-container>
-  </q-layout>
+    </q-layout>
 </template>
 
 <script lang="ts" setup>
 import RouteLink from 'components/RouteLink.vue'
 import { ref } from 'vue'
-
+import { useRouter } from 'vue-router'
+const router = useRouter()
 const leftDrawerOpen = ref(false)
 const toggleLeftDrawer = () => {
   leftDrawerOpen.value = !leftDrawerOpen.value
+}
+const onLogout = async () => {
+  localStorage.clear()
+  await router.push('/login')
 }
 
 const routeLinks = [
