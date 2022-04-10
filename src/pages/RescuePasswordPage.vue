@@ -16,7 +16,7 @@ const submitForm = async () => { console.log('submitForm') }
           <q-btn style="margin-bottom: 10px" class="full-width" color="primary" label="Send Link" type="submit" rounded>
           </q-btn>
           <div class="text-center q-mt-sm q-gutter-lg">
-            <router-link class="text-grey" style="text-decoration: none" to="/login">
+            <router-link class="text-grey" style="text-decoration: none" to="/login/access">
               <q-btn flat icon="vpn_key"> Login </q-btn>
             </router-link>
           </div>

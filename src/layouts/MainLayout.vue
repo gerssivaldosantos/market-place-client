@@ -26,8 +26,12 @@
 
 <script lang="ts" setup>
 import RouteLink from 'components/RouteLink.vue'
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+
+onMounted(() => {
+  if (!localStorage.getItem('token')) { useRouter().push('/login/access') }
+})
 const router = useRouter()
 const leftDrawerOpen = ref(false)
 const toggleLeftDrawer = () => {
@@ -35,7 +39,7 @@ const toggleLeftDrawer = () => {
 }
 const onLogout = async () => {
   localStorage.clear()
-  await router.push('/login')
+  await router.push('/login/access')
 }
 
 const routeLinks = [

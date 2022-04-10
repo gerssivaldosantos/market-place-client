@@ -50,9 +50,9 @@ onMounted(async () => {
           <q-btn style="margin-bottom: 10px" class="full-width" color="primary" label="Login" type="submit" rounded>
           </q-btn>
           <div class="text-center q-mt-sm q-gutter-lg">
-            <router-link class="text-grey" style="text-decoration: none" to="/rescue-password">Esqueceu a senha?
+            <router-link class="text-grey" style="text-decoration: none" to="/login/rescue">Esqueceu a senha?
             </router-link>
-            <router-link class="text-grey" style="text-decoration: none" to="/create-account">Criar conta
+            <router-link class="text-grey" style="text-decoration: none" to="/login/create">Criar conta
             </router-link>
           </div>
         </div>

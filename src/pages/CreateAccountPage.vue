@@ -30,7 +30,7 @@ const submitForm = async () => { console.log('submitForm') }
           <q-btn style="margin-bottom: 10px" class="full-width" color="primary" label="Ok" type="submit" rounded>
           </q-btn>
           <div class="text-center q-mt-sm q-gutter-lg">
-            <router-link class="text-grey" style="text-decoration: none" to="/login">Already have an account?
+            <router-link class="text-grey" style="text-decoration: none" to="/login/access">Already have an account?
             </router-link>
           </div>
         </div>
