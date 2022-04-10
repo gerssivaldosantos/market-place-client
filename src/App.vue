@@ -2,10 +2,6 @@
   <router-view />
 </template>
 
-<script lang="ts" setup>import { onMounted } from 'vue'
-import { useRouter } from 'vue-router'
+<script lang="ts" setup>
 
-onMounted(() => {
-  if (!localStorage.getItem('token')) { useRouter().push('/login') }
-})
 </script>
