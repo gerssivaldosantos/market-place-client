@@ -16,11 +16,11 @@ The client side of market place application
 
 
 ## Screenshots
-<div style="display: flex; width: 100%">
-<img style="height: auto; width: 100%" src="./screenshots/full-size-login-page.png" /> 
-<img style="height: auto; width: 33%" src="./screenshots/low-size-login-page.png" /> 
-<img style="height: auto; width: 33%" src="./screenshots/low-size-create-account-page.png" />
-<img style="height: auto; width: 33%" src="./screenshots/low-size-rescue-password-page.png" />
+<div style="display: flex; width: 100%;">
+<img style="height: auto; width: 97%" src="./screenshots/full-size-login-page.png" /> 
+<img style="height: auto; width: 32%" src="./screenshots/low-size-login-page.png" /> 
+<img style="height: auto; width: 32%" src="./screenshots/low-size-create-account-page.png" />
+<img style="height: auto; width: 32%" src="./screenshots/low-size-rescue-password-page.png" />
 </div>
 
 
