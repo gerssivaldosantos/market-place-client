@@ -1,5 +1,8 @@
-<script lang="ts" setup>import { ref } from 'vue'
+<script lang="ts" setup>
+import { onMounted, ref } from 'vue'
+import { useRouter } from 'vue-router'
 import { useAuth } from '../helpers/useRequest'
+const router = useRouter()
 const email = ref<string>('')
 const password = ref<string>('')
 const submitForm = async () => {
@@ -7,8 +10,18 @@ const submitForm = async () => {
     email: email.value,
     password: password.value
   })
-  console.log(result)
+  if (result.token) {
+    localStorage.setItem('token', result.token)
+    await router.push('/')
+  }
 }
+
+onMounted(async () => {
+  if (localStorage.getItem('token')) {
+    await router.push('/')
+  }
+})
+
 </script>
 
 <template>
