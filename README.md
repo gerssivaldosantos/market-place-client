@@ -4,9 +4,13 @@
 </p>
 <img src="https://img.shields.io/static/v1?label=typescript&message=quasar&color=blue&style=for-the-badge&logo=typescript"/>
 <div align="center" >
-
+  
+  <div>
   <img src="./screenshots/full-size-login-page.png" alt="Logo">
-  <!-- <img src="./screenshots/low-size-login-page.png" alt="Logo"> -->
+  <img src="./screenshots/low-size-login-page.png" alt="Logo">
+  <img src="./screenshots/low-size-create-account-page.png" alt="Logo">
+  </div>
+  <!--- <img src="./screenshots/low-size-change-password-page.png" alt="Logo"> -->
   
 </div>
 
