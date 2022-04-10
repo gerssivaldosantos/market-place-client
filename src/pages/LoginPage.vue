@@ -37,7 +37,9 @@ onMounted(async () => {
     </q-card-section>
     <q-card-section>
       <div class="q-pt-lg">
-        <div class="col text-h6 ellipsis flex justify-center"></div>
+        <div class="text-grey col text-h6 ellipsis flex justify-center">
+          Access Account
+        </div>
       </div>
     </q-card-section>
     <q-card-section>
