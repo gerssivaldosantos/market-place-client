@@ -6,6 +6,6 @@
 import { useRouter } from 'vue-router'
 
 onMounted(() => {
-  localStorage.getItem('token') ?? useRouter().push('/login')
+  if (!localStorage.getItem('token')) { useRouter().push('/login') }
 })
 </script>
