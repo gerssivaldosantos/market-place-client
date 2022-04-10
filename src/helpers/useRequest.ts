@@ -1,5 +1,6 @@
-import axios, { AxiosPromise } from 'axios'
+import axios, { AxiosPromise, AxiosResponse } from 'axios'
 import { AuthRequest } from 'src/dtos/authRequest'
+import { authResponse } from 'src/models/auth'
 
 const baseUrl = 'http://localhost:8085/api/v1'
 
@@ -22,8 +23,8 @@ export const useRequest = {
 }
 
 export const useAuth = {
-  async login (params:AuthRequest, headers = {}) {
-    const token = await axios.post(`${baseUrl}/auth`, params, { headers: getHeaders(headers) })
-    return token
+  async login (params:AuthRequest, headers = {}):Promise<authResponse> {
+    const result:AxiosResponse<authResponse> = await axios.post(`${baseUrl}/auth`, params, { headers: getHeaders(headers) })
+    return result.data
   }
 }
