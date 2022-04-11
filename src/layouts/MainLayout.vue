@@ -47,13 +47,19 @@ const routeLinks = [
     title: 'Home',
     caption: '',
     icon: 'home',
-    route: '/'
+    route: '/index'
+  },
+  {
+    title: 'My Profile',
+    caption: '',
+    icon: 'person',
+    route: '/profile'
   },
   {
     title: 'My Products',
     caption: 'View your products',
-    icon: 'storefront',
-    route: '/my-products'
+    icon: 'store',
+    route: '/products'
   }
 ]
 </script>
