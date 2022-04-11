@@ -1,10 +1,8 @@
-import axios, { AxiosPromise, AxiosResponse } from 'axios'
-import { AuthRequest } from 'src/dtos/authRequest'
-import { authResponse } from 'src/models/auth'
+import axios, { AxiosPromise } from 'axios'
 
-const baseUrl = 'http://localhost:8085/api/v1'
+export const baseUrl = process.env.API || '' /* 'http://localhost:8085/api/v1' */
 
-const getHeaders = (headers = {}) => {
+export const getHeaders = (headers = {}) => {
   if (localStorage.token) {
     const token = localStorage.getItem('token')
     return {
@@ -19,12 +17,5 @@ export const useRequest = {
   },
   post (routeName:string, params?:unknown, headers = {}):AxiosPromise {
     return axios.post(`${baseUrl}/${routeName}`, params, { headers: getHeaders(headers) })
-  }
-}
-
-export const useAuth = {
-  async login (params:AuthRequest, headers = {}):Promise<authResponse> {
-    const result:AxiosResponse<authResponse> = await axios.post(`${baseUrl}/auth`, params, { headers: getHeaders(headers) })
-    return result.data
   }
 }
