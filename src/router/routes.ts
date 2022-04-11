@@ -4,7 +4,11 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
-    children: [{ path: '', component: () => import('pages/IndexPage.vue') }]
+    children: [
+      { path: 'index', component: () => import('pages/IndexPage.vue') },
+      { path: 'profile', component: () => import('pages/ProfilePage.vue') },
+      { path: 'products', component: () => import('pages/MyProducts.vue') }
+    ]
   },
   {
     path: '/login',
@@ -15,11 +19,6 @@ const routes: RouteRecordRaw[] = [
       { path: 'rescue', component: () => import('pages/RescuePasswordPage.vue') },
       { path: 'change/:id', component: () => import('pages/ChangePasswordPage.vue') }
     ]
-  },
-  {
-    path: '/my-products',
-    component: () => import('layouts/MainLayout.vue'),
-    children: [{ path: '', component: () => import('pages/MyProducts.vue') }]
   },
   {
     path: '/:catchAll(.*)*',
