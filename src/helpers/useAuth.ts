@@ -1,6 +1,5 @@
 import axios, { AxiosResponse } from 'axios'
-import { AuthRequest } from 'src/dtos/authRequest'
-import { authResponse } from 'src/models/auth'
+import { AuthRequest, authResponse } from 'src/dtos/auth'
 import { baseUrl, getHeaders } from './useRequest'
 
 export const useAuth = {

@@ -3,3 +3,8 @@ export type authResponse = {
   token: string | undefined
   message: string | undefined
 }
+
+export type AuthRequest = {
+  email: string
+  password: string
+}
