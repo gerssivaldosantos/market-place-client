@@ -3,10 +3,7 @@
     <q-header elevated>
       <q-toolbar>
         <q-btn flat dense round icon="menu" aria-label="Menu" @click="toggleLeftDrawer" />
-
         <q-toolbar-title>Market Place</q-toolbar-title>
-
-        <div>Username</div>
         <q-btn flat icon="logout" @click="onLogout" />
       </q-toolbar>
     </q-header>
