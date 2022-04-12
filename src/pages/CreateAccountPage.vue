@@ -1,11 +1,26 @@
 <script lang="ts" setup>
 
+import { useUser } from 'src/helpers/userRequest'
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 
+const router = useRouter()
 const name = ref<string>('')
 const email = ref<string>('')
 const password = ref<string>('')
-const submitForm = async () => { console.log('submitForm') }
+const submitForm = async () => {
+  try {
+    await useUser.post({
+      name: name.value,
+      email: email.value,
+      password: password.value,
+      user_type_id: '83d99bad-73a6-41c5-a19b-f36cdd1b7d31'
+    })
+    await router.push('/login/access')
+  } catch (err) {
+    console.log(err)
+  }
+}
 
 </script>
 
@@ -35,5 +50,6 @@ const submitForm = async () => { console.log('submitForm') }
           </div>
         </div>
       </q-form>
-    </q-card-section></q-card>
+    </q-card-section>
+  </q-card>
 </template>
