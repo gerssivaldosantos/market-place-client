@@ -17,7 +17,7 @@ const submitForm = async () => {
       await router.push('/')
     }
   } catch (err) {
-    alert(err)
+    console.log(err)
   }
 }
 
@@ -58,5 +58,6 @@ onMounted(async () => {
           </div>
         </div>
       </q-form>
-    </q-card-section></q-card>
+    </q-card-section>
+  </q-card>
 </template>
