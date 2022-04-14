@@ -17,7 +17,8 @@ const routes: RouteRecordRaw[] = [
       { path: 'access', component: () => import('pages/LoginPage.vue') },
       { path: 'create', component: () => import('pages/CreateAccountPage.vue') },
       { path: 'rescue', component: () => import('pages/RescuePasswordPage.vue') },
-      { path: 'change/:id', component: () => import('pages/ChangePasswordPage.vue') }
+      { path: 'change/:id', component: () => import('pages/ChangePasswordPage.vue') },
+      { path: 'congratulations', component: () => import('pages/CongratulationsPage.vue') }
     ]
   },
   {
