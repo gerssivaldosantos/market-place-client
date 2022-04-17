@@ -1,9 +1,21 @@
 <script lang="ts" setup>
 
+import { useRequest } from 'src/helpers/useRequest'
 import { ref } from 'vue'
+import { useRoute } from 'vue-router'
 
 const password = ref<string>('')
-const submitForm = async () => { console.log('submitForm') }
+const route = useRoute()
+const submitForm = async () => {
+  try {
+    await useRequest.post('change-password', {
+      password: password.value,
+      emailToken: route.params.emailToken
+    })
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 </script>
 
@@ -17,5 +29,6 @@ const submitForm = async () => { console.log('submitForm') }
           </q-btn>
         </div>
       </q-form>
-    </q-card-section></q-card>
+    </q-card-section>
+  </q-card>
 </template>
