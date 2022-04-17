@@ -4,9 +4,12 @@
 
 <script lang="ts" setup>
 import axios from 'axios'
-import { useQuasar } from 'quasar'
+import { LocalStorage, useQuasar } from 'quasar'
+import { onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 
 const $q = useQuasar()
+const router = useRouter()
 
 const triggerMessage = (message: string | null, type: string | null) => {
   if (!message) {
@@ -21,7 +24,7 @@ const triggerMessage = (message: string | null, type: string | null) => {
 axios.interceptors.response.use(
   response => {
     if (response.status === 200) {
-      triggerMessage(response.data.message, 'positive')
+      triggerMessage(response.data.message, 'blue')
     }
     return response
   },
@@ -37,6 +40,14 @@ axios.interceptors.response.use(
   }
 )
 $q.dark.set(true)
+
+onMounted(async () => {
+  if (!localStorage.getItem('token')) {
+    LocalStorage.clear()
+    await router.push('/login/access')
+  }
+})
+
 </script>
 
 <style>
