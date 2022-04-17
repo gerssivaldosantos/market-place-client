@@ -1,9 +1,18 @@
 <script lang="ts" setup>
 
+import { useRequest } from 'src/helpers/useRequest'
 import { ref } from 'vue'
 
 const email = ref<string>('')
-const submitForm = async () => { console.log('submitForm') }
+const submitForm = async () => {
+  try {
+    await useRequest.post('rescue-password', {
+      email: email.value
+    })
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 </script>
 
@@ -22,5 +31,6 @@ const submitForm = async () => { console.log('submitForm') }
           </div>
         </div>
       </q-form>
-    </q-card-section></q-card>
+    </q-card-section>
+  </q-card>
 </template>
