@@ -11,7 +11,20 @@
   </div>
 </template>
 
-<script lang="ts" setup>
+<script lang="ts" setup>import { LocalStorage } from 'quasar'
+import { onMounted } from 'vue'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+onMounted(
+  async () => {
+    if (LocalStorage.getItem('token')) {
+      await router.push('/')
+    }
+  }
+)
+
 </script>
 <style scoped>
 .wave {
