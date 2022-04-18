@@ -5,14 +5,15 @@
     </q-avatar>
     <h4>{{ userInfo?.content.name }}</h4>
     <h6>{{ userInfo?.content.email }}</h6>
-    <h8>{{ userInfo?.content.user_type.description }}</h8></q-page>
+    <h8>{{ userInfo?.content.user_type.description }}</h8>
+  </q-page>
 </template>
 
 <script lang="ts" setup>
-import { userResponse } from 'src/models/userResponse'
+import { userResponseDto } from 'src/dtos/user'
 import { onMounted, ref } from 'vue'
 import { useUser } from '../helpers/userRequest'
-const userInfo = ref<userResponse>()
+const userInfo = ref<userResponseDto>()
 onMounted(async () => {
   const id: string = localStorage.getItem('userId') || ''
   const response = await useUser.get(id)
