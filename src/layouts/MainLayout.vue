@@ -18,7 +18,7 @@
     <q-page-container>
       <router-view />
     </q-page-container>
-    </q-layout>
+  </q-layout>
 </template>
 
 <script lang="ts" setup>
@@ -57,6 +57,12 @@ const routeLinks = [
     caption: 'View your products',
     icon: 'store',
     route: '/products'
+  },
+  {
+    title: 'My Orders',
+    caption: 'View your orders',
+    icon: 'sell',
+    route: '/orders'
   }
 ]
 </script>
