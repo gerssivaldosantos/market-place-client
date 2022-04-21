@@ -13,7 +13,7 @@ const router = useRouter()
 
 const triggerMessage = (message: string | null, type: string | null) => {
   if (!message) {
-    message = 'Não foi possível efetuar o login, por favor contate um administrador do sistema'
+    message = 'Not Found'
   }
   $q.notify({
     type: type || 'negative',
