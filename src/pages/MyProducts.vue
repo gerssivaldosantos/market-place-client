@@ -1,8 +1,15 @@
 <template>
   <div class="q-pa-md">
-    <q-table grid separator="none" :rows="rows" row-key="name" />
-    <br>
     <q-btn @click="onClickAddProduct" label="Add New" color="blue"></q-btn>
+    <q-table grid separator="none" :rows="rows" row-key="name" :filter="filter" hide-heade>
+      <template v-slot:top-right>
+        <q-input borderless dense debounce="300" v-model="filter" placeholder="Search">
+          <template v-slot:append>
+            <q-icon name="search" />
+          </template>
+        </q-input>
+      </template>
+    </q-table>
   </div>
 </template>
 
@@ -11,6 +18,7 @@ import CreateProductVue from 'src/components/CreateProduct.vue'
 import { useRequest } from 'src/helpers/useRequest'
 import { ref, onMounted } from 'vue'
 
+const filter = ref('')
 const $q = useQuasar()
 
 const onClickAddProduct = () => {
