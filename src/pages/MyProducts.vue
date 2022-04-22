@@ -1,6 +1,6 @@
 <template>
   <div class="q-pa-md">
-    <q-table separator="none" :rows="rows" row-key="name" />
+    <q-table grid separator="none" :rows="rows" row-key="name" />
     <br>
     <q-btn @click="onClickAddProduct" label="Add New" color="blue"></q-btn>
   </div>
