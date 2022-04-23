@@ -2,7 +2,7 @@
   <q-dialog ref="dialogRef" @hide="onDialogHide">
     <q-card class="q-dialog-plugin">
       <q-card-section>
-        <div style="margin-bottom: 10px; display:grid">
+        <div style="width: 100%; justify-content: center; margin-bottom: 10px; display:grid">
           <span class="text-h6">New Product</span>
         </div>
         <q-form @submit="onRegisterClick">
