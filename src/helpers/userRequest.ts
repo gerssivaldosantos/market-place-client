@@ -3,8 +3,8 @@ import { userDto, userResponseDto } from '../dtos/user'
 import { baseUrl, getHeaders } from './useRequest'
 
 export const useUser = {
-  async get (id:string, headers = {}):Promise<userResponseDto> {
-    const result:AxiosResponse = await axios.get(`${baseUrl}/users/${id}`, { headers: getHeaders(headers) })
+  async get (id?:string, headers = {}):Promise<userResponseDto> {
+    const result:AxiosResponse = await axios.get(`${baseUrl}/users`, { params: id, headers: getHeaders(headers) })
     return result.data
   },
 

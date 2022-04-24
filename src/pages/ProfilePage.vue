@@ -15,8 +15,8 @@ import { onMounted, ref } from 'vue'
 import { useUser } from '../helpers/userRequest'
 const userInfo = ref<userResponseDto>()
 onMounted(async () => {
-  const id: string = localStorage.getItem('userId') || ''
-  const response = await useUser.get(id)
+  const response = await useUser.get()
+  console.log(response)
   userInfo.value = response
 })
 
