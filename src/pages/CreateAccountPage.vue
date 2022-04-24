@@ -39,9 +39,20 @@ const submitForm = async () => {
     </q-card-section>
     <q-card-section>
       <q-form class="q-gutter-md" @submit.prevent="submitForm">
-        <q-input label="name" v-model="name"></q-input>
-        <q-input label="email" v-model="email"></q-input>
+        <q-input label="Your Name" v-model="name">
+          <template v-slot:before>
+            <q-icon name="person" />
+          </template>
+        </q-input>
+        <q-input label="email" v-model="email">
+          <template v-slot:before>
+            <q-icon name="mail" />
+          </template>
+        </q-input>
         <q-input label="Password" v-model="password" :type="isPwd ? 'password' : 'text'">
+          <template v-slot:before>
+            <q-icon name="lock" />
+          </template>
           <template v-slot:append>
             <q-icon :name="isPwd ? 'visibility_off' : 'visibility'" class="cursor-pointer" @click="isPwd = !isPwd" />
           </template>
