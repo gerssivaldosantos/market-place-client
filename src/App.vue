@@ -5,8 +5,10 @@
 <script lang="ts" setup>
 /* import axios from 'axios' */
 import { LocalStorage, useQuasar } from 'quasar'
-import { onMounted } from 'vue'
+import { onMounted, watch } from 'vue'
 import { useRouter } from 'vue-router'
+import { userDto } from './dtos/user'
+import { useUser } from './helpers/userRequest'
 import { useGeneralStore } from './stores/generalStore'
 
 const $s = useGeneralStore()
@@ -41,12 +43,24 @@ axios.interceptors.response.use(
     }
   }
 ) */
-$q.dark.set($s.darkMode)
+watch(() => $s.darkMode, (newValue) => {
+  $q.dark.set(newValue)
+})
+
+const browserStorage = LocalStorage.getAll()
 
 onMounted(async () => {
-  if (!localStorage.getItem('token')) {
+  $s.darkMode = browserStorage.darkMode || false
+
+  if (!browserStorage.token) {
     LocalStorage.clear()
     await router.push('/login/access')
+  } else if ($s.user.infos === {}) {
+    const result = await useUser.get()
+    const infos: userDto = result.content
+    $s.setUserInfo(infos)
+  } else if ($s.token === '') {
+    $s.setToken(browserStorage.token)
   }
 })
 

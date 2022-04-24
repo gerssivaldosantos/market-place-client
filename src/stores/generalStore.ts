@@ -16,6 +16,9 @@ export const useGeneralStore = defineStore('counter', {
   actions: {
     setUserInfo (payload:userDto) {
       this.user.infos = payload
+    },
+    setToken (payload:string) {
+      this.user.token = payload
     }
   }
 })

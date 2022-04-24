@@ -8,6 +8,7 @@
         <q-form @submit="onSaveClick">
           <div class="q-pa-md">
             <!-- Inputs -->
+            <q-toggle v-model="darkMode" label="Dark Mode" />
           </div>
           <q-card-actions align="right">
             <q-btn ref="loginButton" data-cy="login-login-button" type="submit" text-color="white" color="blue"
@@ -20,13 +21,18 @@
 </template>
 
 <script setup lang="ts">
-import { useDialogPluginComponent } from 'quasar'
+import { LocalStorage, useDialogPluginComponent } from 'quasar'
+import { useGeneralStore } from 'src/stores/generalStore'
+import { ref } from 'vue'
 // eslint-disable-next-line no-undef
 defineEmits([...useDialogPluginComponent.emits])
 
 const { dialogRef, onDialogHide, onDialogOK } = useDialogPluginComponent()
-
+const $s = useGeneralStore()
+const darkMode = ref<boolean>($s.darkMode)
 const onSaveClick = () => {
+  $s.darkMode = darkMode.value
+  LocalStorage.set('darkMode', true)
   onDialogOK()
 }
 
