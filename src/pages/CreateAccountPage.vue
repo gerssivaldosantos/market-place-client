@@ -8,6 +8,7 @@ const router = useRouter()
 const name = ref<string>('')
 const email = ref<string>('')
 const password = ref<string>('')
+const isPwd = ref<boolean>(true)
 const submitForm = async () => {
   try {
     await useUser.post({
@@ -40,7 +41,11 @@ const submitForm = async () => {
       <q-form class="q-gutter-md" @submit.prevent="submitForm">
         <q-input label="name" v-model="name"></q-input>
         <q-input label="email" v-model="email"></q-input>
-        <q-input label="password" type="password" v-model="password"></q-input>
+        <q-input label="Password" v-model="password" :type="isPwd ? 'password' : 'text'">
+          <template v-slot:append>
+            <q-icon :name="isPwd ? 'visibility_off' : 'visibility'" class="cursor-pointer" @click="isPwd = !isPwd" />
+          </template>
+        </q-input>
         <div>
           <q-btn style="margin-bottom: 10px" class="full-width" color="primary" label="Ok" type="submit" rounded>
           </q-btn>
