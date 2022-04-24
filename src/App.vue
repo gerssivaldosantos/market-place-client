@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts" setup>
-import axios from 'axios'
+/* import axios from 'axios' */
 import { LocalStorage, useQuasar } from 'quasar'
 import { onMounted } from 'vue'
 import { useRouter } from 'vue-router'
@@ -11,7 +11,7 @@ import { useRouter } from 'vue-router'
 const $q = useQuasar()
 const router = useRouter()
 
-const triggerMessage = (message: string | null, type: string | null) => {
+/* const triggerMessage = (message: string | null, type: string | null) => {
   if (!message) {
     message = 'Not Found'
   }
@@ -38,7 +38,7 @@ axios.interceptors.response.use(
       triggerMessage(null, 'negative')
     }
   }
-)
+) */
 $q.dark.set(true)
 
 onMounted(async () => {
