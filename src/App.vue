@@ -7,7 +7,9 @@
 import { LocalStorage, useQuasar } from 'quasar'
 import { onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import { useGeneralStore } from './stores/generalStore'
 
+const $s = useGeneralStore()
 const $q = useQuasar()
 const router = useRouter()
 
@@ -39,7 +41,7 @@ axios.interceptors.response.use(
     }
   }
 ) */
-$q.dark.set(true)
+$q.dark.set($s.darkMode)
 
 onMounted(async () => {
   if (!localStorage.getItem('token')) {
