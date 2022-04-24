@@ -24,6 +24,7 @@
 <script setup lang="ts">
 import { useDialogPluginComponent } from 'quasar'
 import { useRequest } from 'src/helpers/useRequest'
+import { useUser } from 'src/helpers/userRequest'
 import { ref } from 'vue'
 // eslint-disable-next-line no-undef
 defineEmits([...useDialogPluginComponent.emits])
@@ -34,11 +35,13 @@ const description = ref<string>('')
 const price = ref<number>(0)
 
 const onRegisterClick = async () => {
+  const user = await useUser.get()
   try {
     await useRequest.post('products', {
       name: name.value,
       description: description.value,
-      price: price.value
+      price: price.value,
+      owner_id: user.content.id
     })
     onDialogOK()
   } catch (err) {
