@@ -23,6 +23,8 @@
 
 <script lang="ts" setup>
 import RouteLink from 'components/RouteLink.vue'
+import PreferencesDialog from 'components/PreferencesDialog.vue'
+import { useQuasar } from 'quasar'
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 
@@ -38,6 +40,8 @@ const onLogout = async () => {
   localStorage.clear()
   await router.push('/login/access')
 }
+
+const $q = useQuasar()
 
 const routeLinks = [
   {
@@ -63,6 +67,22 @@ const routeLinks = [
     caption: 'View your orders',
     icon: 'sell',
     route: '/orders'
+  },
+  {
+    title: 'Preferences',
+    caption: 'Change settings',
+    icon: 'settings',
+    onclick: () => {
+      $q.dialog({
+        component: PreferencesDialog
+      }).onOk(async () => {
+        console.log('ok')
+      }).onCancel(() => {
+        console.log('Cancel')
+      }).onDismiss(() => {
+        console.log('Called on OK or Cancel')
+      })
+    }
   }
 ]
 </script>
