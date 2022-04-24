@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { userDto } from 'src/dtos/user'
 
-export const useGeneral = defineStore('counter', {
+export const useGeneralStore = defineStore('counter', {
   state: () => ({
     user: {
       token: '',
