@@ -11,5 +11,10 @@ export const useUser = {
   async post (data:userDto, headers = {}):Promise<userResponseDto> {
     const result:AxiosResponse = await axios.post(`${baseUrl}/users`, data, { headers: getHeaders(headers) })
     return result.data
+  },
+
+  async deleteBulk (data:string[], headers = {}):Promise<userResponseDto> {
+    const result:AxiosResponse = await axios.post(`${baseUrl}/products`, data, { headers: getHeaders(headers) })
+    return result.data
   }
 }

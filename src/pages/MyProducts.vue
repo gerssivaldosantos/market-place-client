@@ -1,11 +1,9 @@
 <template>
   <div class="q-pa-md">
-
-    <q-table grid :visible-columns="visibleColumns" separator="none" :rows="rows" row-key="name"
-      :selected-rows-label="getSelectedString" :selection="toggleDelete ? 'multiple' : 'none'"
-      v-model:selected="selected" :filter="filter" hide-heade>
+    <q-table no-data-label="You not have products, add one !" grid :visible-columns="visibleColumns" separator="none"
+      :rows="rows" row-key="name" :selected-rows-label="getSelectedString"
+      :selection="toggleDelete ? 'multiple' : 'none'" v-model:selected="selected" :filter="filter" hide-heade>
       <template v-slot:body-cell>
-        oi
       </template>
       <template v-slot:top-right>
         <q-input borderless dense debounce="300" v-model="filter" placeholder="Search">
@@ -30,6 +28,7 @@
 
 <script lang="ts" setup>import { useQuasar } from 'quasar'
 import CreateProductVue from 'src/components/CreateProduct.vue'
+import { useProduct } from 'src/helpers/productRequest'
 import { useRequest } from 'src/helpers/useRequest'
 import { ref, onMounted } from 'vue'
 
@@ -61,17 +60,23 @@ const onDeleteSelected = () => {
       cancel: 'No'
     }).onOk(async () => {
       /* Delete selected products */
-      console.log(selected.value)
-    }).onCancel(() => {
-      console.log('Cancel')
-    }).onDismiss(() => {
-      console.log('Called on OK or Cancel')
+      try {
+        const ids = selected.value.map((product: Record<string, string>) => product.id)
+        await useProduct.deleteBulk({ ids })
+        toggleDelete.value = !toggleDelete.value
+        await getProducts()
+      } catch (err) {
+        console.log(err)
+      }
     })
   }
 }
 
 const onToggleDelete = () => {
   toggleDelete.value = !toggleDelete.value
+  if (toggleDelete.value) {
+    selected.value = []
+  }
 }
 
 const selected = ref([])
@@ -84,9 +89,13 @@ const visibleColumns = ref(['name', 'description', 'price'])
 
 const rows = ref<[]>([])
 
-onMounted(async () => {
+const getProducts = async () => {
   const result = await useRequest.get('products')
   rows.value = result.data.content
+}
+
+onMounted(async () => {
+  await getProducts()
 })
 
 </script>
