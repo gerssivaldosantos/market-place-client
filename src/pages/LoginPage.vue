@@ -33,7 +33,7 @@ onMounted(async () => {
 <template>
   <q-card style="padding: 20px" v-bind:style="$q.screen.lt.sm ? { 'width': '80%' } : { 'width': '50%' }">
     <q-card-section>
-      <q-avatar size="103px" class="absolute-center shadow-10">
+      <q-avatar size="100px" class="absolute-center bg-white shadow-2">
         <img src="../assets/avatar.png" alt="avatar" />
       </q-avatar>
     </q-card-section>
