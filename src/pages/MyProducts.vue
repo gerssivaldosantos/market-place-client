@@ -1,8 +1,8 @@
 <template>
   <div class="q-pa-md">
     <q-table no-data-label="You not have products, add one !" grid :visible-columns="visibleColumns" separator="none"
-      :rows="rows" row-key="name" :selected-rows-label="getSelectedString"
-      :selection="toggleDelete ? 'multiple' : 'none'" v-model:selected="selected" :filter="filter" hide-heade>
+      :rows="rows" row-key="id" :selected-rows-label="getSelectedString" :selection="toggleDelete ? 'multiple' : 'none'"
+      v-model:selected="selected" :filter="filter" hide-heade>
       <template v-slot:body-cell>
       </template>
       <template v-slot:top-right>
