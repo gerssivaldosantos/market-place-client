@@ -29,10 +29,12 @@ defineEmits([...useDialogPluginComponent.emits])
 
 const { dialogRef, onDialogHide, onDialogOK } = useDialogPluginComponent()
 const $s = useGeneralStore()
+
 const darkMode = ref<boolean>($s.darkMode)
+
 const onSaveClick = () => {
   $s.darkMode = darkMode.value
-  LocalStorage.set('darkMode', true)
+  LocalStorage.set('darkMode', darkMode.value)
   onDialogOK()
 }
 
