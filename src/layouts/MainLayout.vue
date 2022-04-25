@@ -17,7 +17,7 @@
 
               <div class="column items-center">
                 <q-avatar size="72px">
-                  <img src="../assets/avatar.png">
+                  <img src="../assets/avatar5.png">
                 </q-avatar>
 
                 <div class="text-subtitle1 q-mt-md q-mb-xs">{{ user.name?.split(' ')[0] }}</div>

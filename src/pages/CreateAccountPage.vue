@@ -29,7 +29,7 @@ const submitForm = async () => {
   <q-card style="padding: 20px" v-bind:style="$q.screen.lt.sm ? { 'width': '80%' } : { 'width': '50%' }">
     <q-card-section>
       <q-avatar size="100px" class="absolute-center bg-white shadow-2">
-        <img src="../assets/avatar.png" alt="avatar" />
+        <img src="../assets/avatar5.png" alt="avatar" />
       </q-avatar>
     </q-card-section>
     <q-card-section>

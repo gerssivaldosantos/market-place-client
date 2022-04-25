@@ -1,7 +1,7 @@
 <template>
   <q-page class="column items-center justify-center">
     <q-avatar size="100px">
-      <img src="../assets/avatar.png">
+      <img src="../assets/avatar5.png">
     </q-avatar>
     <h4>{{ userInfo?.content.name }}</h4>
     <h6>{{ userInfo?.content.email }}</h6>
