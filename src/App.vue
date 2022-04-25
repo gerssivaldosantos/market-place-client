@@ -51,15 +51,13 @@ const browserStorage = LocalStorage.getAll()
 
 onMounted(async () => {
   $s.darkMode = browserStorage.darkMode || false
-
+  const result = await useUser.get()
+  const info: userDto = result.content
+  $s.setUserInfo(info)
   if (!browserStorage.token) {
     LocalStorage.clear()
     await router.push('/login/access')
-  } else if ($s.user.infos === {}) {
-    const result = await useUser.get()
-    const infos: userDto = result.content
-    $s.setUserInfo(infos)
-  } else if ($s.token === '') {
+  } else if ($s.getToken === '') {
     $s.setToken(browserStorage.token)
   }
 })
