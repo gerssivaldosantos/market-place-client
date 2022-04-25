@@ -1,4 +1,7 @@
 <script lang="ts" setup>
+import { userDto } from 'src/dtos/user'
+import { useUser } from 'src/helpers/userRequest'
+import { useGeneralStore } from 'src/stores/generalStore'
 import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuth } from '../helpers/useAuth'
@@ -6,6 +9,7 @@ const router = useRouter()
 const email = ref<string>('')
 const password = ref<string>('')
 const isPwd = ref<boolean>(true)
+const $s = useGeneralStore()
 const submitForm = async () => {
   try {
     const result = await useAuth.login({
@@ -14,7 +18,9 @@ const submitForm = async () => {
     })
     if (result.token && result.id) {
       localStorage.setItem('token', result.token)
-      localStorage.setItem('userId', result.id)
+      const user = await useUser.get()
+      const info: userDto = user.content
+      $s.setUserInfo(info)
       await router.push('/')
     }
   } catch (err) {
