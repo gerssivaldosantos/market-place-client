@@ -10,7 +10,7 @@
             <div class="row no-wrap q-pa-md">
               <div class="column">
                 <div class="text-h6 q-mb-md">Settings</div>
-                <q-toggle label="Dark Mode" @update:model-value="onDarkModeSelected" v-model="darkMode" />
+                <q-toggle label="Dark Mode" @update:model-value="onDarkModeSelected" v-model="$s.darkMode" />
               </div>
 
               <q-separator vertical inset class="q-mx-lg" />
@@ -20,7 +20,7 @@
                   <img src="../assets/avatar.png">
                 </q-avatar>
 
-                <div class="text-subtitle1 q-mt-md q-mb-xs">John Doe</div>
+                <div class="text-subtitle1 q-mt-md q-mb-xs">{{ user.name?.split(' ')[0] }}</div>
 
                 <q-btn @click="onLogout" color="primary" label="Logout" push size="sm" v-close-popup />
               </div>
@@ -47,25 +47,24 @@
 import RouteLink from 'components/RouteLink.vue'
 import PreferencesDialog from 'components/PreferencesDialog.vue'
 import { LocalStorage, useQuasar } from 'quasar'
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useGeneralStore } from 'src/stores/generalStore'
 
-/* const cart = ref<string[]>([]) */
-
-onMounted(() => {
-  if (!localStorage.getItem('token')) { useRouter().push('/login/access') }
-})
 const $s = useGeneralStore()
-const darkMode = ref<boolean>($s.darkMode)
 const router = useRouter()
+
+const user = $s.getInfo
+
 const leftDrawerOpen = ref(false)
 const toggleLeftDrawer = () => {
+  console.log(user)
   leftDrawerOpen.value = !leftDrawerOpen.value
 }
 
 const onDarkModeSelected = (value: boolean) => {
   $q.dark.set(value)
+  $s.darkMode = value
   LocalStorage.set('darkMode', value)
 }
 
@@ -77,6 +76,7 @@ const onLogout = async () => {
     cancel: 'No'
   }).onOk(async () => {
     localStorage.clear()
+    $s.$reset()
     await router.push('/login/access')
   })
 }
