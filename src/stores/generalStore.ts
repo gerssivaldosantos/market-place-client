@@ -5,17 +5,17 @@ export const useGeneralStore = defineStore('counter', {
   state: () => ({
     user: {
       token: '',
-      infos: <userDto>{}
+      info: <userDto> {}
     },
     darkMode: false
   }),
   getters: {
-    infos: (state) => state.user.infos,
-    token: (state) => state.user.token
+    getInfo: (state) => state.user.info,
+    getToken: (state) => state.user.token
   },
   actions: {
     setUserInfo (payload:userDto) {
-      this.user.infos = payload
+      this.user.info = payload
     },
     setToken (payload:string) {
       this.user.token = payload
