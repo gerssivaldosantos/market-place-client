@@ -4,7 +4,16 @@
       <q-toolbar>
         <q-btn flat dense round icon="menu" aria-label="Menu" @click="toggleLeftDrawer" />
         <q-toolbar-title>Market Place</q-toolbar-title>
-        <q-btn style="margin-right: 15px;" flat dense round icon="shopping_cart" />
+        <q-btn style="margin-right: 15px;" flat dense round icon="shopping_cart">
+          <q-menu :offset="[0, 10]">
+            <div class="row no-wrap q-pa-md">
+              <div class="column">
+                <div class="text-h6 q-mb-md">Products</div>
+
+              </div>
+            </div>
+          </q-menu>
+        </q-btn>
         <q-btn flat icon="keyboard_arrow_down">
           <q-menu :offset="[0, 10]">
             <div class="row no-wrap q-pa-md">
