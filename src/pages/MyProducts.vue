@@ -3,7 +3,38 @@
     <q-table no-data-label="You not have products, add one !" grid :visible-columns="visibleColumns" separator="none"
       :rows="rows" row-key="id" :selected-rows-label="getSelectedString" :selection="toggleDelete ? 'multiple' : 'none'"
       v-model:selected="selected" :filter="filter" hide-heade>
-      <template v-slot:body-cell>
+      <template v-slot:item="props">
+        <div class="q-pa-xs col-xs-12 col-sm-6 col-md-4">
+          <q-card class="my-card" flat bordered>
+            <div v-if="toggleDelete" class="absolute-bottom-right text-subtitle2">
+              <q-checkbox v-model="props.selected" />
+            </div>
+            <q-card-section horizontal>
+              <q-card-section class="q-pt-xs">
+                <div class="text-h5 q-mt-sm q-mb-xs"> {{ props.row.name }}</div>
+                <div class="text-caption text-grey">
+                  {{ props.row.description }}
+                </div>
+              </q-card-section>
+
+              <q-card-section class="col-7 flex flex-center">
+                <q-img class="rounded-borders"
+                  src="https://s2.glbimg.com/d8aMotGsi_GuzD1yjI_UdgiI3rg=/0x0:1080x718/924x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2021/y/z/644eBtTeSihz98yBg95w/redmi-g-2021.jpg" />
+              </q-card-section>
+            </q-card-section>
+
+            <q-separator />
+
+            <q-card-actions>
+              <q-btn icon="add_shopping_cart" flat color="primary">
+                Add to cart
+              </q-btn>
+              <q-btn flat icon="shopping_bag" color="primary">
+                Buy
+              </q-btn>
+            </q-card-actions>
+          </q-card>
+        </div>
       </template>
       <template v-slot:top-right>
         <q-input borderless dense debounce="300" v-model="filter" placeholder="Search">
