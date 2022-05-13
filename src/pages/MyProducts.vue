@@ -18,8 +18,8 @@
                 <q-card-section>
                   <p>{{
                       props.row.description.length > 64
-                      ? `${props.row.description.slice(0, 64)}...`
-                      : props.row.description
+                        ? `${props.row.description.slice(0, 64)}...`
+                        : props.row.description
                   }}
                   </p>
                 </q-card-section>
