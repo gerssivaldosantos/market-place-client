@@ -1,7 +1,9 @@
 <script lang="ts" setup>
 
+import { userTypeDto } from 'src/dtos/userType'
 import { useUser } from 'src/helpers/userRequest'
-import { ref } from 'vue'
+import { useUserType } from 'src/helpers/userTypeRequest'
+import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
@@ -9,6 +11,12 @@ const name = ref<string>('')
 const email = ref<string>('')
 const password = ref<string>('')
 const isPwd = ref<boolean>(true)
+
+onMounted(async () => {
+  const userTypes:userTypeDto = await useUserType.getAll()
+  console.log(userTypes)
+})
+
 const submitForm = async () => {
   try {
     await useUser.post({
