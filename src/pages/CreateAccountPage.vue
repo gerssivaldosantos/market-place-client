@@ -11,10 +11,11 @@ const name = ref<string>('')
 const email = ref<string>('')
 const password = ref<string>('')
 const isPwd = ref<boolean>(true)
+const userType = ref<userTypeDto>()
+const userTypes = ref<userTypeDto[]>([])
 
 onMounted(async () => {
-  const userTypes:userTypeDto = await useUserType.getAll()
-  console.log(userTypes)
+  userTypes.value = await useUserType.getAll()
 })
 
 const submitForm = async () => {
@@ -23,7 +24,7 @@ const submitForm = async () => {
       name: name.value,
       email: email.value,
       password: password.value,
-      user_type_id: '83d99bad-73a6-41c5-a19b-f36cdd1b7d31'
+      user_type_id: userType?.value?.id
     })
     await router.push('/login/access')
   } catch (err) {
@@ -65,6 +66,12 @@ const submitForm = async () => {
             <q-icon :name="isPwd ? 'visibility_off' : 'visibility'" class="cursor-pointer" @click="isPwd = !isPwd" />
           </template>
         </q-input>
+        <q-select borderless v-model="userType" option-label="name" option-value="id"
+          :options="userTypes.filter((userType) => userType.permission_level > 1)" label="User type">
+          <template v-slot:prepend>
+            <q-icon name="dashboard" />
+          </template>
+        </q-select>
         <div>
           <q-btn style="margin-bottom: 10px" class="full-width" color="primary" label="Ok" type="submit" rounded>
           </q-btn>
