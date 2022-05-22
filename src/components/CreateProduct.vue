@@ -7,6 +7,17 @@
         </div>
         <q-form @submit="onRegisterClick">
           <div class="q-pa-md">
+            <q-file bottom-slots v-model="photo" label="Photo">
+              <template v-slot:prepend>
+                <q-icon name="cloud_upload" @click.stop />
+              </template>
+              <template v-if="photo" v-slot:append>
+                <q-icon name="close" @click="photo = undefined" class="cursor-pointer" />
+              </template>
+              <template v-slot:hint>
+                This will can be viewed on the product page.
+              </template>
+            </q-file>
             <q-input v-model="name" label="Name" type="text" />
             <q-input v-model="description" label="Description" type="text" />
             <q-input v-model="price" label="Price" type="number" />
@@ -33,6 +44,7 @@ const { dialogRef, onDialogHide, onDialogOK } = useDialogPluginComponent()
 const name = ref<string>('')
 const description = ref<string>('')
 const price = ref<number>(0)
+const photo = ref<File>()
 
 const onRegisterClick = async () => {
   const user = await useUser.get()
